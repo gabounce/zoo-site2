@@ -21,10 +21,6 @@ namespace ZooSite2
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel(options =>
-                {
-                    options.Listen(IPAddress.Loopback, 5000);
-                })
                 .Build();
     }
 }
