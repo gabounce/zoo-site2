@@ -24,10 +24,6 @@ namespace ZooSite2
                 .UseKestrel(options =>
                 {
                     options.Listen(IPAddress.Loopback, 5000);
-                    options.Listen(IPAddress.Loopback, 5001, listenOptions =>
-                    {
-                        listenOptions.UseHttps("testCert.pfx", "testPassword");
-                    });
                 })
                 .Build();
     }
