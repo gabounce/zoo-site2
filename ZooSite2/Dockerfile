@@ -1,14 +1,13 @@
-FROM microsoft/aspnetcore-build:2.0 as build-env
+FROM microsoft/aspnetcore-build:2.0
 
 WORKDIR /app
+
+COPY *.csproj ./
 RUN dotnet restore
 
-RUN dotnet build -c release
+COPY . ./
+
 RUN dotnet publish -c release -o app
-
-COPY /app /app
-
-RUN docker build -t zooSite2 .
 
 EXPOSE 5000/tcp
 ENV ASPNETCORE_URLS http://*:5000
